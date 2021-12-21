@@ -7,7 +7,8 @@
     "console.table": "^0.10.0",
     "express": "^4.17.2",
     "inquirer": "^8.2.0",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "uniqid": "^5.4.0"
   },
   "scripts": {
     "lint": "eslint --ext .js --ignore-path .gitignore ."
