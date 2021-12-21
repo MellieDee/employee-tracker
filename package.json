@@ -1,9 +1,15 @@
 {
   "devDependencies": {
+    "eslint": "^8.5.0",
     "jest": "^27.4.5"
   },
   "dependencies": {
+    "console.table": "^0.10.0",
+    "express": "^4.17.2",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3"
+  },
+  "scripts": {
+    "lint": "eslint --ext .js --ignore-path .gitignore ."
   }
 }

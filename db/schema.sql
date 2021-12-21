@@ -2,36 +2,38 @@
 
 DROP TABLE IF EXISTS employee;
 DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS departments;
 
-CREATE TABLE department (
-  id INTEGER AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
+
+CREATE TABLE departments (
+  dept_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  dept_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE roles (
-  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  role_id INTEGER AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
   salary DECIMAL,
-  department_id INTEGER
-  CONSTRAINT fk_department
+  department_id INTEGER,
+  CONSTRAINT fk_departments
   FOREIGN KEY (department_id)
-  REFERENCES department(id)
+  REFERENCES departments(dept_id)
   ON DELETE SET NULL
 );
 
 CREATE TABLE employees (
-  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  employee_id INTEGER AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
-  role_id INTEGER
+  role_id INTEGER,
   CONSTRAINT fk_role
-  FOREIGN KEY (roles_id)
-  REFERENCES roles(id)
-  ON DELETE SET NULL
-  /* check if fk even if in same table*/,
-  manager_id INTEGER
-  CONSTRAINT fk_employee
-  REFERENCES employees(id)
+  FOREIGN KEY (role_id)
+  REFERENCES roles(role_id)
   ON DELETE SET NULL,
+  /* check if fk even if in same table*/
+  manager_id INTEGER,
+  CONSTRAINT sr_fk_employee
+  FOREIGN KEY (manager_id)
+  REFERENCES employees(employee_id)
+  ON DELETE SET NULL
 );

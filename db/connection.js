@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 const mysql = require('mysql2');
 
 
@@ -5,13 +6,14 @@ const mysql = require('mysql2');
 const db = mysql.createConnection(
   {
     host: 'localhost',
-    // your MySQL username,
+    // mySQL username,
     user: 'root',
-    // your MySQL pw
+    // mySQL pw
     password: 'E9tH95Dq5',
-    database: 'election'
+    database: 'employee_db'
   },
-  console.log('Connected to the election db.')
+  console.log('Connected to employee_db.')
 );
 
+// eslint-disable-next-line no-undef
 module.exports = db;
