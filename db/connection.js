@@ -1,19 +1,26 @@
-// eslint-disable-next-line no-undef
+/* eslint-disable */
+
+// **********    Set dependencies    ******
 const mysql = require('mysql2');
 
 
-// Connect to db
-const db = mysql.createConnection(
+// **********    Connect to db    *********
+const dbConnect = mysql.createConnection(
   {
     host: 'localhost',
     // mySQL username,
-    user: 'root',
+    user: 'mdd',
     // mySQL pw
-    password: 'E9tH95Dq5',
+    password: 'Dq5H95E9t',
     database: 'employee_db'
   },
-  console.log('Connected to employee_db.')
+  console.log('Connected to employee_db')
 );
 
-// eslint-disable-next-line no-undef
-module.exports = db;
+//    ****   catch error to not crach app    ****
+dbConnect.connect(function (err) {
+  if (err) throw err;
+})
+
+
+module.exports = dbConnect;
