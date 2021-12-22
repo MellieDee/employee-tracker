@@ -6,56 +6,47 @@
 //   **********    Dependencies    ******************
 const dbConnect = require('./db/connection');
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 const viewOptions = require('./lib/viewQueries');
-require('console.table');
 
 
 
 dbConnect.connect(function (err) {
   if (err) throw err;
-
-  const optionPrompt = () => {
-    console.log(`
   
-  |====================== Welcome! ========================|
-  |                                                        |
-  |                                                        |
-  |============= Search your Employee Database ============|
-  |                                                        |
-  |                                                        |
-  |========= & May all beings have happy minds!  ==========|
-  |                               attributed to Buddha     |
-  |========================================================|
-                                   
 
+const optionPrompt = () => {
+
+  console.log (`
+  
+  ============== What do you want to do? =============
+  
   `);
 
 
-    return inquirer
-      .prompt([
-        // ****** Option Menu ******
-        {
-          type: 'list',
-          name: 'option',
-          message: 'What would you like to do?',
-          choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee Role', 'Exit']
-        }
-      ])
-      .then(answer => {
-        console.log(answer.option)
-
-        //   Check to see what the answer is
-        return viewOptions(answer.option);
-      })
+  return inquirer
+    .prompt([
+      // ****** Option Menu ******
+      {
+        type: 'list',
+        name: 'option',
+        message: 'Pick ONE license.',
+        choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee Role', 'Exit']
+      }
+    ])
+    .then(choice => {
+      console.log(choice)
+      return choice;
+    })
   };
 
-  // ** Running the app
-  optionPrompt()
-    .then(choice => {
-      return viewOptions(choice)
-    })
-    .catch(err => {
-      console.log(err);
-    });
+// ** Running the app
+optionPrompt()
+.then(answer => {
+  return viewOptions(answer)
+})
+  .catch(err => {
+    console.log(err);
+  });
 
 })

@@ -29,3 +29,5 @@ CREATE TABLE employee (
   REFERENCES role(id)
   ON DELETE CASCADE
 );
+
+-- need to add manager!!!
