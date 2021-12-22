@@ -1,4 +1,7 @@
 -- Order of table creation and table drop depends on dependencies
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS department;
 
 CREATE TABLE department (
   dept_id INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -6,7 +9,7 @@ CREATE TABLE department (
 );
 
 CREATE TABLE role (
-  role_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
   salary DECIMAL,
   department_id INTEGER,
@@ -20,15 +23,9 @@ CREATE TABLE employee (
   employee_id INTEGER AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
-  emp_role_id INTEGER,
-  CONSTRAINT fk_role
-  FOREIGN KEY (emp_role_id)
-  REFERENCES role(role_id)
-  ON DELETE CASCADE,
-  /* check if fk, even if in same table*/
-  manager_id INTEGER,
-  CONSTRAINT sr_fk_employee
-  FOREIGN KEY (manager_id)
-  REFERENCES employee(employee_id)
-  ON DELETE SET NULL
+  role_id INTEGER,
+  CONSTRAINT fk_role_id
+  FOREIGN KEY (role_id)
+  REFERENCES role(id)
+  ON DELETE CASCADE
 );
