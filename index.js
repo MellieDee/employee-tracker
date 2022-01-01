@@ -7,21 +7,18 @@
 const dbConnect = require('./db/connection');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
-const { viewDepartments, viewRoles, viewEmployees } = require('./lib/viewQueries');
-// const viewOptions = require('./lib/viewQueries');
-// const viewDepartments = require('./lib/viewQueries');
-
-
+const { viewDepartments, viewRoles, viewEmployees } = require('./lib/viewQueries')
+const mysql = require('mysql2/promise');
 
 
 const optionPrompt = () => {
   console.log(`
   
-  ============== Welcome to Employee Tracker! =============
+  ============== Your Employee Tracker =============
   
   `);
-  return inquirer
-    .prompt([
+return inquirer
+.prompt([
       // ****** Option Menu ******
       {
         type: 'list',
@@ -44,25 +41,92 @@ const optionPrompt = () => {
       switch (answer.option) {
 
         case 'View all departments':
-          viewDepartments();
+          console.log('departments')
+          viewDepartments()  
+          
+          setTimeout(function() {
+            optionPrompt()
+          }, 2000);
           break;
 
         case 'View all roles':
+          console.log('roles')
           viewRoles();
+
+          setTimeout(function() {
+            optionPrompt()
+          }, 2000);
           break;
 
         case 'View all employees':
           viewEmployees();
+          setTimeout(function() {
+            optionPrompt()
+          }, 2000);
           break;
+
+       
 
         default:
           dbConnect.end(function (err) {
             console.log('Thank you! Goodbye.')
           })
-        }
+        } 
+
       })
+      // .then(optionPrompt)
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // // ** Running the app
+      optionPrompt()
+        .then(choices => { 
+      return(choices)
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+
+
+// case 'Add a department':
+    
+      //   addDept();
+      //   break;
+
+      // case 'Add a role':
+      //   addRoles();
+      //     break;
+
+      // case 'Add an employee':
+      //   addEmployees();
+      //   break;
+
+      // case 'Update an employee Role':
+      //    updateEmpRole();
+      //   break;
+
+
+
+
+
+
+
+
+
             // const { action } = answer
 
 
@@ -80,17 +144,4 @@ const optionPrompt = () => {
  
         // viewRoles();
         // viewEmployees();
-    
-
-
-
-      // ** Running the app
-      // optionPrompt()
-      //   .then(choices => {
-      //     return (choices)
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-
-      module.exports = optionPrompt
+  

@@ -4,6 +4,7 @@
 const mysql = require('mysql2');
 
 
+
 // **********    Connect to db    *********
 const dbConnect = mysql.createConnection(
   {
@@ -17,7 +18,8 @@ const dbConnect = mysql.createConnection(
   console.log('Connected to employee_db')
 );
 
-//    ****   catch error to not crach app    ****
+
+//    ****   catch error to not crash app    ****
 dbConnect.connect(function (err) {
   if (err) throw err;
 })
