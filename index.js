@@ -43,7 +43,7 @@ inquirer.prompt(
           
           setTimeout(function() {
             optionPrompt()
-          }, 1500);
+          }, 2000);
           break;
 
         case 'View all roles':
@@ -52,7 +52,7 @@ inquirer.prompt(
 
           setTimeout(function() {
             optionPrompt()
-          }, 1500);
+          }, 2000);
           break;
 
         case 'View all employees':
@@ -60,34 +60,34 @@ inquirer.prompt(
           
           setTimeout(function() {
             optionPrompt()
-          }, 1500);
+          }, 2000);
           break;
 
        
         case 'Add a department':
           addDeptPrompt();
           // optionPrompt();
-          setTimeout(function() {
-            optionPrompt()
-          }, 1500);
+          // setTimeout(function() {
+          //   optionPrompt()
+          // }, 1500);
           break;
 
           
         case 'Add a role':
           addRolePrompt();
           // optionPrompt();
-          setTimeout(function() {
-            optionPrompt()
-          }, 1500);
+          // setTimeout(function() {
+          //   optionPrompt()
+          // }, 1500);
           break;
 
 
         case 'Add an employee':
           addEmpPrompt();
           // optionPrompt();
-          setTimeout(function() {
-            optionPrompt()
-          }, 1500);
+          // setTimeout(function() {
+          //   optionPrompt()
+          // }, 1500);
           break;
 
       // case 'Update an employee Role':

@@ -18,4 +18,10 @@ https://smarttechways.com/2021/12/01/error-1452-23000-cannot-add-or-update-a-chi
 
 https://www.w3schools.com/js/js_promise.asp
 
+https://www.javatpoint.com/mysql-self-join
+
+https://www.youtube.com/watch?v=ck8mVDOOCCg
+
+
+
 
