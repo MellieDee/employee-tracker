@@ -3,10 +3,9 @@ const dbConnect = require('./db/connection');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 const mysql = require('mysql2');
-const { viewDepartments, viewRoles, viewEmployees } = require('./lib/viewQueries')
-const { deleteDept } = require('./lib/deleteQueries')
-const { addDeptPrompt, addRolePrompt } = require('./lib/addQueries')
-
+const { viewDepartments, viewRoles, viewEmployees } = require('./lib/viewQueries');
+const { addDeptPrompt, addRolePrompt, addEmpPrompt } = require('./lib/addQueries')
+//const { deleteDept } = require('./lib/deleteQueries');
 
 
 optionPrompt = () => {
@@ -53,7 +52,7 @@ inquirer.prompt(
 
           setTimeout(function() {
             optionPrompt()
-          }, 2000);
+          }, 1500);
           break;
 
         case 'View all employees':
@@ -61,26 +60,40 @@ inquirer.prompt(
           
           setTimeout(function() {
             optionPrompt()
-          }, 2000);
+          }, 1500);
           break;
 
        
         case 'Add a department':
           addDeptPrompt();
           // optionPrompt();
-          // setTimeout(function() {
-          //   optionPrompt()
-          // }, 1500);
+          setTimeout(function() {
+            optionPrompt()
+          }, 1500);
           break;
 
           
         case 'Add a role':
           addRolePrompt();
           // optionPrompt();
-          // setTimeout(function() {
-          //   optionPrompt()
-          // }, 1500);
+          setTimeout(function() {
+            optionPrompt()
+          }, 1500);
           break;
+
+
+        case 'Add an employee':
+          addEmpPrompt();
+          // optionPrompt();
+          setTimeout(function() {
+            optionPrompt()
+          }, 1500);
+          break;
+
+      // case 'Update an employee Role':
+      //    updateEmpRole();
+      //   break;
+
 
 
         // case 'Delete a department':
@@ -124,140 +137,3 @@ inquirer.prompt(
     //    .catch(err => {
     //      console.log(err);
     //    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  ******** DRAFT CODE  TRIALS in INDEX vs Modularized  ******
-
-//  **** Functions for ADDING Data   ****
-
-// ================ Add Department  ================
-
-// const addDeptPrompt = () => {
-//   console.log(`
-
-// ============= Add a Department   =============
-
-// `);
-//   return inquirer
-//     .prompt([
-//       // ** Department Name **
-//       {
-//         type: 'input',
-//         name: 'newDept',
-//         message: "What is the Department Name? (Required)",
-//         validate: newDeptInput => {
-//           if (newDeptInput) {
-//             return true;
-//           } else {
-//             console.log('Please enter the Department Name!');
-//             return false;
-//           }
-//         }
-//       }
-//     ])
-//     .then(data => {
-//       console.log(data)
-
-//       var addDeptQuery = `INSERT INTO department (dept_name) VALUES (?)`;
-
-// dbConnect.query(addDeptQuery, data.newDept, (err, result) => {
-//  if (err) throw err;
-//  console.log(`
-
-//  ============== New Department Added =============
-        
-//         `);
-
-//         viewDepartments();
-
-//       });
-//     });
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// case 'Add a department':
-    
-      //   addDept();
-      //   break;
-
-      // case 'Add a role':
-      //   addRoles();
-      //     break;
-
-      // case 'Add an employee':
-      //   addEmployees();
-      //   break;
-
-      // case 'Update an employee Role':
-      //    updateEmpRole();
-      //   break;
-
-
-
-
-
-
-
-
-
-            // const { action } = answer
-
-
-            //  if (action === 'View all departments') {
-
-            // viewDepartments();
-
-            //  }
-            // if (action === 'Exit') {
-
-            //   dbConnect.end(function (err) {
-            //     console.log('Thank you! Goodbye.')
-            //   });
-            // }
- 
-        // viewRoles();
-        // viewEmployees();
-  
