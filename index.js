@@ -4,7 +4,8 @@ const inquirer = require('inquirer');
 const cTable = require('console.table');
 const mysql = require('mysql2');
 const { viewDepartments, viewRoles, viewEmployees } = require('./lib/viewQueries')
-// const { addDeptPrompt } = require('./lib/addQueries')
+const { deleteDept } = require('./lib/deleteQueries')
+const { addDeptPrompt, addRolePrompt } = require('./lib/addQueries')
 
 
 
@@ -72,15 +73,35 @@ inquirer.prompt(
           // }, 1500);
           break;
 
-      case 'Exit':
+          
+        case 'Add a role':
+          addRolePrompt();
+          // optionPrompt();
+          // setTimeout(function() {
+          //   optionPrompt()
+          // }, 1500);
+          break;
+
+
+        // case 'Delete a department':
+        //   addDeptPrompt();
+        //   optionPrompt();
+        //   setTimeout(function() {
+        //   optionPrompt()
+        //   }, 1500);
+        //   break;
+
+
+      // case 'Exit':
+      default:
           dbConnect.end(function (err) {
             console.log('Thank you! Goodbye.')
           })
           break;
 
-      default: 
-      optionPrompt();
-      break;
+      // default: 
+      // optionPrompt();
+      // break;
 
         } 
 
@@ -119,51 +140,64 @@ inquirer.prompt(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//  ******** DRAFT CODE  TRIALS in INDEX vs Modularized  ******
+
 //  **** Functions for ADDING Data   ****
 
 // ================ Add Department  ================
 
-const addDeptPrompt = () => {
-  console.log(`
+// const addDeptPrompt = () => {
+//   console.log(`
 
-============= Add a Department   =============
+// ============= Add a Department   =============
 
-`);
-  return inquirer
-    .prompt([
-      // ** Department Name **
-      {
-        type: 'input',
-        name: 'newDept',
-        message: "What is the Department Name? (Required)",
-        validate: newDeptInput => {
-          if (newDeptInput) {
-            return true;
-          } else {
-            console.log('Please enter the Department Name!');
-            return false;
-          }
-        }
-      }
-    ])
-    .then(data => {
-      console.log(data)
+// `);
+//   return inquirer
+//     .prompt([
+//       // ** Department Name **
+//       {
+//         type: 'input',
+//         name: 'newDept',
+//         message: "What is the Department Name? (Required)",
+//         validate: newDeptInput => {
+//           if (newDeptInput) {
+//             return true;
+//           } else {
+//             console.log('Please enter the Department Name!');
+//             return false;
+//           }
+//         }
+//       }
+//     ])
+//     .then(data => {
+//       console.log(data)
 
-      var addDeptQuery = `INSERT INTO department (dept_name) VALUES (?)`;
+//       var addDeptQuery = `INSERT INTO department (dept_name) VALUES (?)`;
 
-dbConnect.query(addDeptQuery, data.newDept, (err, result) => {
- if (err) throw err;
- console.log(`
+// dbConnect.query(addDeptQuery, data.newDept, (err, result) => {
+//  if (err) throw err;
+//  console.log(`
 
- ============== New Department Added =============
+//  ============== New Department Added =============
         
-        `);
+//         `);
 
-        viewDepartments();
+//         viewDepartments();
 
-      });
-    });
-};
+//       });
+//     });
+// };
 
 
 

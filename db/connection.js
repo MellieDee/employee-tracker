@@ -9,9 +9,7 @@ const mysql = require('mysql2');
 const dbConnect = mysql.createConnection(
   {
     host: 'localhost',
-    // mySQL username,
     user: 'mdd',
-    // mySQL pw
     password: 'Dq5H95E9t',
     database: 'employee_db'
   },
@@ -19,10 +17,11 @@ const dbConnect = mysql.createConnection(
 );
 
 
-//    ****   catch error to not crash app    ****
+//    ****   Start Connection & catch error to not crash app    ****
 dbConnect.connect(function (err) {
   if (err) throw err;
   // optionPrompt();
+
 });
 
 
