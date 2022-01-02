@@ -22,6 +22,10 @@ https://www.javatpoint.com/mysql-self-join
 
 https://www.youtube.com/watch?v=ck8mVDOOCCg
 
+https://www.w3schools.com/sql/sql_insert.asp
+
+
+
 
 
 
