@@ -1,25 +1,21 @@
-// functionName = (param -paren optional if only 1 Param-) => {}
-// ask user for choice of To-Do - choicePrompt() in index.js collect as []
-
-/* eslint-disable */
-
 //   **********    Dependencies    ******************
 const dbConnect = require('./db/connection');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
+const mysql = require('mysql2');
 const { viewDepartments, viewRoles, viewEmployees } = require('./lib/viewQueries')
-const mysql = require('mysql2/promise');
+// const { addDeptPrompt } = require('./lib/addQueries')
 
 
-const optionPrompt = () => {
+
+optionPrompt = () => {
   console.log(`
   
   ============== Your Employee Tracker =============
   
   `);
-return inquirer
-.prompt([
-      // ****** Option Menu ******
+inquirer.prompt(  
+  // ****** Option Menu ******
       {
         type: 'list',
         name: 'option',
@@ -34,19 +30,20 @@ return inquirer
             'Update an employee Role',
             'Exit']
       }
-    ])
+    )
     .then((answer) => {
       console.log(answer)
       // answer.option  or destructure and pull option out  they are the same things
       switch (answer.option) {
-
         case 'View all departments':
           console.log('departments')
-          viewDepartments()  
+          viewDepartments();  
+          // optionPrompt();
+          // break;
           
           setTimeout(function() {
             optionPrompt()
-          }, 2000);
+          }, 1500);
           break;
 
         case 'View all roles':
@@ -60,17 +57,31 @@ return inquirer
 
         case 'View all employees':
           viewEmployees();
+          
           setTimeout(function() {
             optionPrompt()
           }, 2000);
           break;
 
        
+        case 'Add a department':
+          addDeptPrompt();
+          // optionPrompt();
+          // setTimeout(function() {
+          //   optionPrompt()
+          // }, 1500);
+          break;
 
-        default:
+      case 'Exit':
           dbConnect.end(function (err) {
             console.log('Thank you! Goodbye.')
           })
+          break;
+
+      default: 
+      optionPrompt();
+      break;
+
         } 
 
       })
@@ -79,6 +90,19 @@ return inquirer
     }
 
 
+// module.exports = {
+//   optionPrompt
+// }
+
+
+ //  ** Running the app
+   optionPrompt()
+    // .then(choices => { 
+    // return(choices)
+    //    })
+    //    .catch(err => {
+    //      console.log(err);
+    //    });
 
 
 
@@ -91,14 +115,72 @@ return inquirer
 
 
 
-      // // ** Running the app
-      optionPrompt()
-        .then(choices => { 
-      return(choices)
-        })
-        .catch(err => {
-          console.log(err);
-        });
+
+
+
+
+//  **** Functions for ADDING Data   ****
+
+// ================ Add Department  ================
+
+const addDeptPrompt = () => {
+  console.log(`
+
+============= Add a Department   =============
+
+`);
+  return inquirer
+    .prompt([
+      // ** Department Name **
+      {
+        type: 'input',
+        name: 'newDept',
+        message: "What is the Department Name? (Required)",
+        validate: newDeptInput => {
+          if (newDeptInput) {
+            return true;
+          } else {
+            console.log('Please enter the Department Name!');
+            return false;
+          }
+        }
+      }
+    ])
+    .then(data => {
+      console.log(data)
+
+      var addDeptQuery = `INSERT INTO department (dept_name) VALUES (?)`;
+
+dbConnect.query(addDeptQuery, data.newDept, (err, result) => {
+ if (err) throw err;
+ console.log(`
+
+ ============== New Department Added =============
+        
+        `);
+
+        viewDepartments();
+
+      });
+    });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

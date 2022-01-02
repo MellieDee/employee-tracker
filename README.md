@@ -16,5 +16,6 @@ https://www.mysqltutorial.org/mysql-uuid/
 https://smarttechways.com/2021/12/01/error-1452-23000-cannot-add-or-update-a-child-row-a-foreign-key-constraint-fails/
 
 
+https://www.w3schools.com/js/js_promise.asp
 
 

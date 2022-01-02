@@ -1,4 +1,4 @@
-/* eslint-disable */
+// const { optionPrompt } = require('../index')
 
 // **********    Set dependencies    ******
 const mysql = require('mysql2');
@@ -22,7 +22,8 @@ const dbConnect = mysql.createConnection(
 //    ****   catch error to not crash app    ****
 dbConnect.connect(function (err) {
   if (err) throw err;
-})
+  // optionPrompt();
+});
 
 
 module.exports = dbConnect;
