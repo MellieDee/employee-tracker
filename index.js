@@ -3,8 +3,9 @@ const dbConnect = require('./db/connection');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 const mysql = require('mysql2');
-const { viewDepartments, viewRoles, viewEmployees } = require('./lib/viewQueries');
+const { viewDepartments, viewRoles, viewEmployees, viewOneEmp } = require('./lib/viewQueries');
 const { addDeptPrompt, addRolePrompt, addEmpPrompt } = require('./lib/addQueries')
+const { updateEmpPrompt} = require('./lib/updateQueries')
 //const { deleteDept } = require('./lib/deleteQueries');
 
 
@@ -27,23 +28,23 @@ inquirer.prompt(
             'Add a department',
             'Add a role',
             'Add an employee',
-            'Update an employee Role',
+            'Update an employee role',
             'Exit']
       }
     )
-    .then((answer) => {
+    .then(answer => {
       console.log(answer)
       // answer.option  or destructure and pull option out  they are the same things
       switch (answer.option) {
         case 'View all departments':
           console.log('departments')
           viewDepartments();  
-          // optionPrompt();
-          // break;
+          optionPrompt();
+          break;
           
-          setTimeout(function() {
-            optionPrompt()
-          }, 2000);
+          // setTimeout(function() {
+          //   optionPrompt()
+          // }, 2000);
           break;
 
         case 'View all roles':
@@ -67,9 +68,9 @@ inquirer.prompt(
         case 'Add a department':
           addDeptPrompt();
           // optionPrompt();
-          // setTimeout(function() {
-          //   optionPrompt()
-          // }, 1500);
+          setTimeout(function() {
+            optionPrompt()
+          }, 1500);
           break;
 
           
@@ -90,9 +91,9 @@ inquirer.prompt(
           // }, 1500);
           break;
 
-      // case 'Update an employee Role':
-      //    updateEmpRole();
-      //   break;
+        case 'Update an employee role':
+          updateEmpPrompt();
+          break;
 
 
 

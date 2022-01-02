@@ -24,6 +24,10 @@ https://www.youtube.com/watch?v=ck8mVDOOCCg
 
 https://www.w3schools.com/sql/sql_insert.asp
 
+https://www.mysqltutorial.org/mysql-self-join/](https://www.mysqltutorial.org/mysql-self-join/)
+
+https://gomakethings.com/how-to-reorder-an-item-in-an-array-with-vanilla-js/
+
 
 
 
