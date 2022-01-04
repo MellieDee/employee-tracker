@@ -12,34 +12,42 @@ const { updateEmpPrompt } = require('./lib/updateQueries')
 
 
 // //  ************  REPEAT MENU Function  *********
-// repeatPrompt = () => {
-//   return inquirer.prompt([
-//     {
-//       type: 'confirm',
-//       name: 'confirmAgain',
-//       message: 'Would you like to do something else?',
-//       default: false,
-//     },
-//   ])
-//     .then(data => {
+const repeatPrompt = () => {
+  return inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'confirmAgain',
+      message: 'Would you like to do something else?',
+      default: false,
+    },
+  ])
+    .then(data => {
 
-//       // determine whether or not another action is wantes
-//       if (data.confirmAgain) {
-//         optionPrompt()
-//       } else {
-//         // dbConnect.end(function (err) {
-//           console.log('Thank you! Goodbye.')
-//         // })
-//       }
-//     });
-// }
+      // determine whether or not another action is wantes
+      if (data.confirmAgain) {
+        optionPrompt()
+      } else {
+        // dbConnect.end(function (err) {
+        console.log(`
+
+========================= Thank You.  Good-Bye! =========================
+                      
+          `)
+        // })
+      }
+    });
+}
 
 
 //  **************  MAIN OPTION MENU   ***********
 const optionPrompt = () => {
   console.log(`
   
-  ============== Your Employee Tracker =============
+  ================== Your Employee Tracker ==================
+
+
+
+  ----------  Scroll in CLI to See Previous Tables  ---------
   
   `);
   return inquirer.prompt(
@@ -66,71 +74,58 @@ const optionPrompt = () => {
 
         case 'View all departments':
           // console.log('departments')
-          viewDepartments(optionPrompt);
-          // optionPrompt();
-          // repeatPrompt();
-          // repeatPrompt()
-          // .then(repeatPrompt)
-          // .catch(err => {
-          //   console.log(err);
-          // });
+          viewDepartments(repeatPrompt);
           break;
-
-        // setTimeout(function() {
-        //   optionPrompt()
-        // }, 2000);
-
 
         case 'View all roles':
           // console.log('roles')
-          viewRoles(optionPrompt);
+          viewRoles(repeatPrompt);
           break;
 
         case 'View all employees':
-          viewEmployees();
-          // repeatPrompt();
+          viewEmployees(repeatPrompt);
           break;
 
         case 'Add a department':
-          addDeptPrompt();
-          // repeatPrompt();
+          addDeptPrompt(repeatPrompt);
           break;
 
 
         case 'Add a role':
-          addRolePrompt();
-          // repeatPrompt();
+          addRolePrompt(repeatPrompt);
           break;
 
 
         case 'Add an employee':
-          addEmpPrompt();
-          // repeatPrompt();
+          addEmpPrompt(repeatPrompt);
           break;
 
         case 'Update an employee role':
-          updateEmpPrompt();
-          // repeatPrompt();
+          updateEmpPrompt(repeatPrompt);
           break;
 
 
         // case 'Delete a department':
         //   addDeptPrompt();
-        //   optionPrompt();
-        //   setTimeout(function() {
-        //   optionPrompt()
-        //   }, 1500);
         //   break;
 
         case 'Exit':
           dbConnect.end(function (err) {
-            console.log('Thank you! Goodbye.')
+            console.log(`
+
+========================= Thank You.  Good-Bye! =========================
+            
+            `)
           })
           break;
 
         default:
           dbConnect.end(function (err) {
-            console.log('Thank you! Goodbye.')
+            console.log(`
+            
+            ========================= Thank You.  Good-Bye! =========================
+            
+            `)
           })
           break;
 
@@ -148,63 +143,6 @@ const optionPrompt = () => {
   //   console.log(err);
   //   });
 }
-
-
-
-// function viewRoles() {
-//   const roleQuery = `SELECT 
-//       role.id AS ID,  
-//       role.title AS Title,  
-//       CONCAT("$",FORMAT(role.salary,0)) AS Salary, 
-//       department.dept_name AS Department
-//         FROM role
-//             LEFT JOIN department
-//               ON role.department_id = department.dept_id`
-
-//   dbConnect.promise().query(roleQuery)
-//     .then(([rows]) => {
-//       console.table(rows)
-//       // repeatPrompt()
-    
-//     })
-//     .then(optionPrompt())
-//     .catch(console.log)
-//   // .then( () => dbConnect.end())
-// };
-
-
-
-// // 
-// function viewDepartments() {
-//   // Query database from department table
-//   // dbConnect.query('SELECT * FROM department', 
-// //   function (err, results) {
-// //     if (err) throw err;
-// //     console.table(results);
-// //   });
-// // };
-
-// const deptQuery = `SELECT 
-// dept_id AS ID,  
-// dept_name AS Name
-// FROM department`
-
-// // Question:  how do error throw? is catch enough?
-// dbConnect.promise().query(deptQuery)
-//   .then(([rows]) => {
-//     console.table(rows)
-//   })
-//   .then
-//   .catch(err => {
-//   console.log(err);
-//    })
-// // .then( () => dbConnect.end())
-
-// };
-
-
-
-
 
 
 
