@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 const cTable = require('console.table');
 const mysql = require('mysql2');
 const util = require('util')
-const { viewDepartments, viewEmployees, viewRoles, viewOneEmp } = require('./lib/viewQueries');
+const { viewDepartments, viewEmployees, viewRoles } = require('./lib/viewQueries');
 const { addDeptPrompt, addRolePrompt, addEmpPrompt } = require('./lib/addQueries')
 const { updateEmpPrompt } = require('./lib/updateQueries')
 //const { deleteDept } = require('./lib/deleteQueries');
@@ -27,13 +27,13 @@ const repeatPrompt = () => {
       if (data.confirmAgain) {
         optionPrompt()
       } else {
-        // dbConnect.end(function (err) {
-        console.log(`
+        dbConnect.end(function (err) {
+          console.log(`
 
 ========================= Thank You.  Good-Bye! =========================
                       
           `)
-        // })
+        })
       }
     });
 }
@@ -74,15 +74,23 @@ const optionPrompt = () => {
 
         case 'View all departments':
           // console.log('departments')
+          console.log(`    
+------------------------------------------------------------------------------------
+`);
           viewDepartments(repeatPrompt);
           break;
 
         case 'View all roles':
-          // console.log('roles')
+          console.log(`    
+------------------------------------------------------------------------------------
+`);
           viewRoles(repeatPrompt);
           break;
 
         case 'View all employees':
+          console.log(`    
+---------------------------------------------------------------------------------------
+`);
           viewEmployees(repeatPrompt);
           break;
 
