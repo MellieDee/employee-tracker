@@ -4,35 +4,35 @@ const inquirer = require('inquirer');
 const cTable = require('console.table');
 const mysql = require('mysql2');
 const util = require('util')
-const { viewDepartments, viewRoles, viewEmployees, viewOneEmp } = require('./lib/viewQueries');
+const { viewDepartments, viewEmployees, viewRoles, viewOneEmp } = require('./lib/viewQueries');
 const { addDeptPrompt, addRolePrompt, addEmpPrompt } = require('./lib/addQueries')
 const { updateEmpPrompt } = require('./lib/updateQueries')
 //const { deleteDept } = require('./lib/deleteQueries');
 
 
 
-//  ************  REPEAT MENU Function  *********
-repeatPrompt = () => {
-  return inquirer.prompt([
-    {
-      type: 'confirm',
-      name: 'confirmAgain',
-      message: 'Would you like to do something else?',
-      default: false,
-    },
-  ])
-    .then(data => {
+// //  ************  REPEAT MENU Function  *********
+// repeatPrompt = () => {
+//   return inquirer.prompt([
+//     {
+//       type: 'confirm',
+//       name: 'confirmAgain',
+//       message: 'Would you like to do something else?',
+//       default: false,
+//     },
+//   ])
+//     .then(data => {
 
-      // determine whether or not another action is wantes
-      if (data.confirmAgain) {
-        optionPrompt()
-      } else {
-        // dbConnect.end(function (err) {
-          console.log('Thank you! Goodbye.')
-        // })
-      }
-    });
-}
+//       // determine whether or not another action is wantes
+//       if (data.confirmAgain) {
+//         optionPrompt()
+//       } else {
+//         // dbConnect.end(function (err) {
+//           console.log('Thank you! Goodbye.')
+//         // })
+//       }
+//     });
+// }
 
 
 //  **************  MAIN OPTION MENU   ***********
@@ -66,8 +66,9 @@ const optionPrompt = () => {
 
         case 'View all departments':
           // console.log('departments')
-          viewDepartments();
-          repeatPrompt();
+          viewDepartments(optionPrompt);
+          // optionPrompt();
+          // repeatPrompt();
           // repeatPrompt()
           // .then(repeatPrompt)
           // .catch(err => {
@@ -82,13 +83,12 @@ const optionPrompt = () => {
 
         case 'View all roles':
           // console.log('roles')
-          viewRoles();
-          repeatPrompt();
+          viewRoles(optionPrompt);
           break;
 
         case 'View all employees':
           viewEmployees();
-          repeatPrompt();
+          // repeatPrompt();
           break;
 
         case 'Add a department':
@@ -150,19 +150,78 @@ const optionPrompt = () => {
 }
 
 
+
+// function viewRoles() {
+//   const roleQuery = `SELECT 
+//       role.id AS ID,  
+//       role.title AS Title,  
+//       CONCAT("$",FORMAT(role.salary,0)) AS Salary, 
+//       department.dept_name AS Department
+//         FROM role
+//             LEFT JOIN department
+//               ON role.department_id = department.dept_id`
+
+//   dbConnect.promise().query(roleQuery)
+//     .then(([rows]) => {
+//       console.table(rows)
+//       // repeatPrompt()
+    
+//     })
+//     .then(optionPrompt())
+//     .catch(console.log)
+//   // .then( () => dbConnect.end())
+// };
+
+
+
+// // 
+// function viewDepartments() {
+//   // Query database from department table
+//   // dbConnect.query('SELECT * FROM department', 
+// //   function (err, results) {
+// //     if (err) throw err;
+// //     console.table(results);
+// //   });
+// // };
+
+// const deptQuery = `SELECT 
+// dept_id AS ID,  
+// dept_name AS Name
+// FROM department`
+
+// // Question:  how do error throw? is catch enough?
+// dbConnect.promise().query(deptQuery)
+//   .then(([rows]) => {
+//     console.table(rows)
+//   })
+//   .then
+//   .catch(err => {
+//   console.log(err);
+//    })
+// // .then( () => dbConnect.end())
+
+// };
+
+
+
+
+
+
+
+
 //  ** Running the app
 optionPrompt()
-  .then(repeatPrompt())
-  // .then(data => {
+// .then(optionPrompt)
+//   // // .then(data => {
 
-  // })
-  .catch(err => {
-    console.log(err);
-  });
+//   // })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
 
 
-// module.exports = repeatPrompt()
+module.exports = optionPrompt
 
 
 
