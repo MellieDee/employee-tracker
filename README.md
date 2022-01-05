@@ -91,7 +91,7 @@ Does not have a deployment URL.
 
 ---
 
-<img src="../assets/images/screenShot.png" width="350" height="275" alt="Opening screen for command-line project showing the main choices menu.">
+<img src="./assets/images/empTrackScreenShot.png" width="350" height="275" alt="Opening screen for command-line project showing the main choices menu.">
 
 &nbsp;
 
