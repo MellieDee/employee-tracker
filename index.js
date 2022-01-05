@@ -6,8 +6,8 @@ const mysql = require('mysql2');
 const util = require('util')
 const { viewDepartments, viewEmployees, viewRoles } = require('./lib/viewQueries');
 const { addDeptPrompt, addRolePrompt, addEmpPrompt } = require('./lib/addQueries')
+// const { deleteDeptPrompt } = require('./lib/deleteQueries')
 const { updateEmpPrompt } = require('./lib/updateQueries')
-//const { deleteDept } = require('./lib/deleteQueries');
 
 
 
@@ -68,12 +68,10 @@ const optionPrompt = () => {
     }
   )
     .then(answer => {
-      // console.log(answer)
       // answer.option  or destructure and pull option out  they are the same things
       switch (answer.option) {
 
         case 'View all departments':
-          // console.log('departments')
           console.log(`    
 ------------------------------------------------------------------------------------
 `);
@@ -114,7 +112,7 @@ const optionPrompt = () => {
 
 
         // case 'Delete a department':
-        //   addDeptPrompt();
+        //   deleteDeptPrompt(repeatPrompt);
         //   break;
 
         case 'Exit':
@@ -136,20 +134,12 @@ const optionPrompt = () => {
             `)
           })
           break;
-
-        // default: 
-        // optionPrompt();
-        // break;
-
       }
 
     })
-  // .then(data => {
-  //   return repeatPrompt(data)
-  // })
-  // .catch(err => {
-  //   console.log(err);
-  //   });
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 
