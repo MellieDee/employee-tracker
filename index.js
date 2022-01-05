@@ -1,9 +1,9 @@
 //   **********    Dependencies    ******************
 const dbConnect = require('./db/connection');
 const inquirer = require('inquirer');
-const cTable = require('console.table');
-const mysql = require('mysql2');
-const util = require('util')
+// const cTable = require('console.table');
+// const mysql = require('mysql2');
+// const util = require('util')
 const { viewDepartments, viewEmployees, viewRoles } = require('./lib/viewQueries');
 const { addDeptPrompt, addRolePrompt, addEmpPrompt } = require('./lib/addQueries')
 // const { deleteDeptPrompt } = require('./lib/deleteQueries')
