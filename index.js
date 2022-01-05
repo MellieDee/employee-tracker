@@ -135,7 +135,6 @@ const optionPrompt = () => {
           })
           break;
       }
-
     })
     .catch(err => {
       console.log(err);

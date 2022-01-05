@@ -8,19 +8,19 @@ https://stackoverflow.com/questions/23259168/what-are-express-json-and-express-u
 
 ###### Mysql
 
-https://pencilprogrammer.com/self-referencing-foreign-key-in-mysql/
-
-https://smarttechways.com/2021/12/01/error-1452-23000-cannot-add-or-update-a-child-row-a-foreign-key-constraint-fails/
-
 https://www.javatpoint.com/mysql-self-join
-
-https://www.youtube.com/watch?v=ck8mVDOOCCg
-
-https://www.w3schools.com/sql/sql_insert.asp
 
 https://www.mysqltutorial.org/mysql-self-join/](https://www.mysqltutorial.org/mysql-self-join/)
 
 https://www.mysqltutorial.org/mysql-uuid/
+
+https://pencilprogrammer.com/self-referencing-foreign-key-in-mysql/
+
+https://smarttechways.com/2021/12/01/error-1452-23000-cannot-add-or-update-a-child-row-a-foreign-key-constraint-fails/
+
+https://www.w3schools.com/sql/sql_insert.asp
+
+https://www.youtube.com/watch?v=ck8mVDOOCCg
 
 &nbsp;
 
@@ -38,11 +38,12 @@ https://www.w3schools.com/js/js_promise.asp
 
 ###### General Coding
 
+https://github.com/nicolewallace09/employee-tracker/blob/master/server.js
+
 https://gomakethings.com/how-to-reorder-an-item-in-an-array-with-vanilla-js/
 
 https://www.youtube.com/watch?v=oLZcnyK-EpE
 
-https://github.com/nicolewallace09/employee-tracker/blob/master/server.js
 &nbsp;
 
 ###### References for README File styling
