@@ -36,11 +36,11 @@ This command-line app allows users to view, create, and update a company’s typ
 
 See package.json for dependencies and other details.
 
-`git clone`
+`git clone`</br>
 Code to local directory
 &nbsp;
 
-`npm install`
+`npm install`</br>
 From command line npm install the following:
 
 - Node
@@ -49,7 +49,7 @@ From command line npm install the following:
 - console.table
   &nbsp;
 
-`mysql -u <username> -p`
+`mysql -u <username> -p`</br>
 If need to re-seed the database ~</br>
 From the command-line, run the above mysql command to start mysql. Enter password (see connection file)</br>
 Database is employee_db
@@ -62,7 +62,7 @@ In mySql command-line shell -
 the from command-line and in the root directory, run app as usual with: node index
 &nbsp;
 
-`node index`
+`node index`</br>
 To start the app ~
 From the command-line and in program root directory, type: node index.
 &nbsp;
@@ -84,6 +84,7 @@ From the command-line and in program root directory, type: node index.
 ---
 
 Does not have a deployment URL.
+[Employee Tracker run through on YouTube](https://youtu.be/3wtUe1YyAkQ)
 
 &nbsp;
 
